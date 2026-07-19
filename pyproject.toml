@@ -1,0 +1,13 @@
+[project]
+name = "brazilian-address-linkage"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "numpy>=2.5.1",
+    "pandas>=3.0.3",
+    "pyspark>=4.2.0",
+    "requests>=2.34.2",
+]
