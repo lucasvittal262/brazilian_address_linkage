@@ -10,4 +10,5 @@ dependencies = [
     "pandas>=3.0.3",
     "pyspark>=4.2.0",
     "requests>=2.34.2",
+    "tqdm>=4.69.0",
 ]
