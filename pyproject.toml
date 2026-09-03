@@ -16,5 +16,6 @@ dependencies = [
     "plotly>=6.9.0",
     "pyspark>=4.2.0",
     "requests>=2.34.2",
+    "splink>=4.0.16",
     "tqdm>=4.69.0",
 ]
