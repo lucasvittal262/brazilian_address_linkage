@@ -1,0 +1,66 @@
+{
+   "DSC_LOCALIDADE": [
+       "INDEFINIDA",
+       "INDEFINIDO",
+       "DESCONHECIDA",
+       "DESCONHECIDO",
+       "NAO INFORMADO",
+       "NAO ESPECIFICADO",
+       "PENDENTE",
+       "SEM IDENTIFICACAO",
+       "LUGAR DESCONHECIDO",
+       "FAZENDA DESCONHECIDA",
+       "FUNDO DE PASTO DESCONHECIDO",
+       "SITIO DESCONHECIDO",
+       "SEM IDENTIFICAO",
+       "SEM NOME",
+       "SEM DENOMINACAO",
+       "SEM DENOMINACO",
+       "SEM DENOMINCAO",
+       "SEM DENOMINACOA",
+       "VAGO",
+       "DUVIDAS",
+       "DUVIDOSA",
+       "DUVIDOSO",
+       "ESCRITORIO VAGO"
+    ],
+   "CEP": [
+       "NAO INFORMADO",
+       "DESCONHECIDO",
+       "SEM IDENTIFICACAO"
+    ],
+   "COD_TIPO_ESPECI": [
+       "None"
+    ],
+   "NOM_SEGLOGR": [
+       "INDEFINIDO",
+       "CAMINHO INDEFINIDO",
+       "CONJUNTO INDEFINIDO",
+       "VAGO",
+       "CASA VAGA",
+       "DUVIDOSO",
+       "DUVIDOSA",
+       "APROXIMADO",
+       "SEM REFERENCIA",
+       "SEM NUMERO",
+       "NOME IGNORADO",
+       "SEM NUMERO",
+       "DESCONHECIDO",
+       "DESCONHECIDA",
+       "NOME DESCONHECIDO",
+       "FAZENDA DESCONHECIDA",
+       "NOME IGNORADO",
+       "NAO LOCALIZADAS",
+       "NAO LOCALIZADOS",
+       "NAO LOCALIZADA",
+        "NAO LOCALIZADO",
+       "PENDENTE",
+       "ESTIMADA",
+       "SEM DOMICILIO",
+       "SEM DENOMINACAO",
+       "NAO INFORMADO",
+       "SEM DESTINO"
+    ],
+   "NOM_TIPO_SEGLOGR" :["OUTROS"]
+
+}
