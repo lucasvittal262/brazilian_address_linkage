@@ -1,0 +1,66 @@
+{
+  "NV_GEO_COORD": {
+    "descricao": "Nível de geocodificação",
+    "valores": {
+      "1": "Endereço - coordenada original do Censo 2022",
+      "2": "Endereço - coordenada modificada (apartamentos em um mesmo número no logradouro)",
+      "3": "Endereço - coordenada estimada (endereços originalmente sem coordenadas ou coordenadas inválidas)",
+      "4": "Face de quadra",
+      "5": "Localidade",
+      "6": "Setor censitário"
+    }
+  },
+  "COD_ESPECIE": {
+    "descricao": "Espécie de endereço",
+    "valores": {
+      "1": "Domicílio particular",
+      "2": "Domicílio coletivo",
+      "3": "Estabelecimento agropecuário",
+      "4": "Estabelecimento de ensino",
+      "5": "Estabelecimento de saúde",
+      "6": "Estabelecimento de outras finalidades",
+      "7": "Edificação em construção ou reforma",
+      "8": "Estabelecimento religioso"
+    }
+  },
+  "DSC_ESTABELECIMENTO": {
+    "descricao": "Identificação do estabelecimento"
+  },
+  "COD_INDICADOR_ESTAB_ENDERECO": {
+    "descricao": "Indicador de estabelecimento",
+    "valores": {
+      "1": "Único",
+      "2": "Múltiplo, com até 10 estabelecimentos no endereço",
+      "3": "Múltiplo, com mais de 10 estabelecimentos no endereço",
+      "4": "Múltiplo, com quantidade de estabelecimentos desconhecida no endereço"
+    }
+  },
+  "COD_INDICADOR_CONST_ENDERECO": {
+    "descricao": "Indicador de construção ou reforma",
+    "valores": {
+      "1": "Único",
+      "2": "Múltiplo, com até 10 unidades no endereço",
+      "3": "Múltiplo, com mais de 10 unidades no endereço",
+      "4": "Múltiplo, com quantidade de unidades desconhecida no endereço"
+    }
+  },
+  "COD_INDICADOR_FINALIDADE_CONST": {
+    "descricao": "Indicador de finalidade de construção",
+    "valores": {
+      "1": "Residencial",
+      "2": "Não residencial",
+      "3": "Misto",
+      "4": "Indeterminado"
+    }
+  },
+  "COD_TIPO_ESPECI": {
+    "descricao": "Tipo da edificação dos domicílios",
+    "valores": {
+      "101": "Casa",
+      "102": "Casa de vila ou em condomínio",
+      "103": "Apartamento",
+      "104": "Outros"
+    }
+  }
+}
+
