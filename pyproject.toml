@@ -13,7 +13,7 @@ dependencies = [
     "matplotlib>=3.11.1",
     "nbformat>=5.10.4",
     "numpy>=2.5.1",
-    "pandas<3.0.0",
+    "pandas>=3.0.0",
     "plotly>=6.9.0",
     "pyspark>=4.2.0",
     "requests>=2.34.2",
