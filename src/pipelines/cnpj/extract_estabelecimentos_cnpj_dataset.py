@@ -119,6 +119,7 @@ if __name__ == "__main__":
     import getpass
 
     USER_NAME = getpass.getuser()
+    LABEL = "cnpj"
     DATALAKE_PATH = f"/media/{USER_NAME}/Seagate Portable Drive/Datalake"
     OUTPUT_DIR = DATALAKE_PATH / "raw" / LABEL
 
@@ -127,7 +128,6 @@ if __name__ == "__main__":
     PROJECT_ID = "basedosdados"
     DATASET_NAME = "br_rf_cnpj"
     TABLE = "estabelecimentos"
-    LABEL = "cnpj"
     DATE_COLUMN = "data_referencia"
     MONTHS = 12
 
