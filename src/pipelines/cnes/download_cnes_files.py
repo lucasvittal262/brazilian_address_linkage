@@ -49,7 +49,9 @@ def generate_year_months(start_date, end_date) -> List[str]:
     return year_months
 
 
-def get_not_downloaded_year_months(year_months: List[str], output_dir: str) -> List[str]:
+def get_not_downloaded_year_months(
+    year_months: List[str], output_dir: str
+) -> List[str]:
     """Return a list of year_months that have not yet been downloaded to output_dir."""
     logger.info("Checking for already downloaded files in %s", output_dir)
 
@@ -64,7 +66,7 @@ def get_not_downloaded_year_months(year_months: List[str], output_dir: str) -> L
         len(not_downloaded),
         len(year_months),
     )
-    return not_downloaded 
+    return not_downloaded
 
 
 def download_cnes_file(year_month: str, output_dir: str) -> None:
@@ -140,7 +142,9 @@ def extract_zip_file(zip_path: str, output_folder: str) -> None:
     logger.info("Extracting %s -> %s", zip_path, output_folder)
 
     try:
-        folder_name = os.path.splitext(os.path.basename(zip_path))[0].replace(".zip", "")
+        folder_name = os.path.splitext(os.path.basename(zip_path))[0].replace(
+            ".zip", ""
+        )
         os.makedirs(os.path.join(output_folder, folder_name), exist_ok=True)
 
         with zipfile.ZipFile(zip_path, "r") as zip_ref:
@@ -191,7 +195,11 @@ def extract_and_clean_zips(output_folder: str) -> Tuple[int, int]:
 
 
 if __name__ == "__main__":
-    OUTPUT_DIR = "data/raw/cnes"
+    import getpass
+
+    USER_NAME = getpass.getuser()
+    DATALAKE_PATH = f"/media/{USER_NAME}/Seagate Portable Drive/Datalake"
+    OUTPUT_DIR = DATALAKE_PATH / "raw/cnes"
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -205,7 +213,9 @@ if __name__ == "__main__":
 
     year_months = generate_year_months(START_DATE, END_DATE)
     not_downloaded_year_months = get_not_downloaded_year_months(year_months, OUTPUT_DIR)
-    success, failures = download_cnes_files(not_downloaded_year_months, output_dir=OUTPUT_DIR)
+    success, failures = download_cnes_files(
+        not_downloaded_year_months, output_dir=OUTPUT_DIR
+    )
     extracted_success, extracted_failures = extract_and_clean_zips(OUTPUT_DIR)
 
     elapsed_time = time() - time_start

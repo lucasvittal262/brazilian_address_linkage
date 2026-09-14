@@ -3,7 +3,14 @@ import os
 
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import lit
-from pyspark.sql.types import LongType, StructField, StructType, StringType, IntegerType, DoubleType
+from pyspark.sql.types import (
+    LongType,
+    StructField,
+    StructType,
+    StringType,
+    IntegerType,
+    DoubleType,
+)
 from tqdm import tqdm
 
 logging.basicConfig(
@@ -68,50 +75,57 @@ def save_integrated_data(integrated_df: DataFrame, output_file_path: str) -> Non
 
 if __name__ == "__main__":
     import time
-    
+    import getpass
+
+    USER_NAME = getpass.getuser()
+    DATALAKE_PATH = f"/media/{USER_NAME}/Seagate Portable Drive/Datalake"
+    RAW_DATA_DIR = DATALAKE_PATH / "raw"
+    OUTPUT_FILE_PATH = (
+        DATALAKE_PATH / "bronze/integrated/integrated_cnefe_addresses.parquet"
+    )
+
     start_time = time.time()
     spark = SparkSession.builder.appName("Integrating Data").getOrCreate()
     spark.sparkContext.setLogLevel("WARN")  # quiet down Spark's own noisy logs
 
-    RAW_DATA_DIR = "data/raw"
-    OUTPUT_FILE_PATH = "data/integrated/integrated_cnefe_addresses.parquet"
-
-    CNEFE_SCHEMA = StructType([
-        StructField("COD_UNICO_ENDERECO", LongType(), True),
-        StructField("COD_UF", IntegerType(), True),
-        StructField("COD_MUNICIPIO", LongType(), True),
-        StructField("COD_DISTRITO", LongType(), True),
-        StructField("COD_SUBDISTRITO", LongType(), True),
-        StructField("COD_SETOR", StringType(), True),
-        StructField("NUM_QUADRA", IntegerType(), True),
-        StructField("NUM_FACE", IntegerType(), True),
-        StructField("CEP", StringType(), True),
-        StructField("DSC_LOCALIDADE", StringType(), True),
-        StructField("NOM_TIPO_SEGLOGR", StringType(), True),
-        StructField("NOM_TITULO_SEGLOGR", StringType(), True),
-        StructField("NOM_SEGLOGR", StringType(), True),
-        StructField("NUM_ENDERECO", IntegerType(), True),
-        StructField("DSC_MODIFICADOR", StringType(), True),
-        StructField("NOM_COMP_ELEM1", StringType(), True),
-        StructField("VAL_COMP_ELEM1", StringType(), True),
-        StructField("NOM_COMP_ELEM2", StringType(), True),
-        StructField("VAL_COMP_ELEM2", StringType(), True),
-        StructField("NOM_COMP_ELEM3", StringType(), True),
-        StructField("VAL_COMP_ELEM3", StringType(), True),
-        StructField("NOM_COMP_ELEM4", StringType(), True),
-        StructField("VAL_COMP_ELEM4", StringType(), True),
-        StructField("NOM_COMP_ELEM5", StringType(), True),
-        StructField("VAL_COMP_ELEM5", StringType(), True),
-        StructField("LATITUDE", DoubleType(), True),
-        StructField("LONGITUDE", DoubleType(), True),
-        StructField("NV_GEO_COORD", IntegerType(), True),
-        StructField("COD_ESPECIE", IntegerType(), True),
-        StructField("DSC_ESTABELECIMENTO", StringType(), True),
-        StructField("COD_INDICADOR_ESTAB_ENDERECO", StringType(), True),
-        StructField("COD_INDICADOR_CONST_ENDERECO", StringType(), True),
-        StructField("COD_INDICADOR_FINALIDADE_CONST", StringType(), True),
-        StructField("COD_TIPO_ESPECI", IntegerType(), True),
-    ])
+    CNEFE_SCHEMA = StructType(
+        [
+            StructField("COD_UNICO_ENDERECO", LongType(), True),
+            StructField("COD_UF", IntegerType(), True),
+            StructField("COD_MUNICIPIO", LongType(), True),
+            StructField("COD_DISTRITO", LongType(), True),
+            StructField("COD_SUBDISTRITO", LongType(), True),
+            StructField("COD_SETOR", StringType(), True),
+            StructField("NUM_QUADRA", IntegerType(), True),
+            StructField("NUM_FACE", IntegerType(), True),
+            StructField("CEP", StringType(), True),
+            StructField("DSC_LOCALIDADE", StringType(), True),
+            StructField("NOM_TIPO_SEGLOGR", StringType(), True),
+            StructField("NOM_TITULO_SEGLOGR", StringType(), True),
+            StructField("NOM_SEGLOGR", StringType(), True),
+            StructField("NUM_ENDERECO", IntegerType(), True),
+            StructField("DSC_MODIFICADOR", StringType(), True),
+            StructField("NOM_COMP_ELEM1", StringType(), True),
+            StructField("VAL_COMP_ELEM1", StringType(), True),
+            StructField("NOM_COMP_ELEM2", StringType(), True),
+            StructField("VAL_COMP_ELEM2", StringType(), True),
+            StructField("NOM_COMP_ELEM3", StringType(), True),
+            StructField("VAL_COMP_ELEM3", StringType(), True),
+            StructField("NOM_COMP_ELEM4", StringType(), True),
+            StructField("VAL_COMP_ELEM4", StringType(), True),
+            StructField("NOM_COMP_ELEM5", StringType(), True),
+            StructField("VAL_COMP_ELEM5", StringType(), True),
+            StructField("LATITUDE", DoubleType(), True),
+            StructField("LONGITUDE", DoubleType(), True),
+            StructField("NV_GEO_COORD", IntegerType(), True),
+            StructField("COD_ESPECIE", IntegerType(), True),
+            StructField("DSC_ESTABELECIMENTO", StringType(), True),
+            StructField("COD_INDICADOR_ESTAB_ENDERECO", StringType(), True),
+            StructField("COD_INDICADOR_CONST_ENDERECO", StringType(), True),
+            StructField("COD_INDICADOR_FINALIDADE_CONST", StringType(), True),
+            StructField("COD_TIPO_ESPECI", IntegerType(), True),
+        ]
+    )
 
     logger.info("=== Starting CNEFE data integration pipeline ===")
     integrated_df = integrate_municipality_data(RAW_DATA_DIR, CNEFE_SCHEMA)
@@ -121,4 +135,3 @@ if __name__ == "__main__":
     end_time = time.time()
     elapsed_time = end_time - start_time
     logger.info(f"Total elapsed time: {elapsed_time:.2f} seconds")
-    

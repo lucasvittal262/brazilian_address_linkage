@@ -17,7 +17,7 @@ def get_data_from_bq(
     table: str,
     date_column: str,
     year: int,
-    month: int
+    month: int,
 ) -> DataFrame:
 
     full_table_name = f"{project_id}.{dataset}.{table}"
@@ -61,6 +61,7 @@ def save_to_parquet(df: DataFrame, path: str):
         logger.error(f"❌ Failed to save data to '{path}': {e}")
         raise
 
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -81,19 +82,29 @@ def extract_all_data(
     ano_min, ano_max = int(ano_min), int(ano_max)
     total = (ano_max - ano_min + 1) * months
 
-    logger.info(f"🚀 Starting extraction of '{table}' ({ano_min}-{ano_max}, {total} files to go)")
+    logger.info(
+        f"🚀 Starting extraction of '{table}' ({ano_min}-{ano_max}, {total} files to go)"
+    )
 
     count = 0
     for year in range(ano_min, ano_max + 1):
         for month in range(1, months + 1):
             count += 1
-            output_path = output_dir / f"extracted_data_{label}_{table}_{year}_{month}.parquet"
+            output_path = (
+                output_dir / f"extracted_data_{label}_{table}_{year}_{month}.parquet"
+            )
 
             logger.info(f"📥 ({count}/{total}) Fetching {year}-{month:02d}...")
 
             try:
                 df = get_data_from_bq(
-                    spark, project_id, dataset_name, table, date_column, year=year, month=month
+                    spark,
+                    project_id,
+                    dataset_name,
+                    table,
+                    date_column,
+                    year=year,
+                    month=month,
                 )
                 save_to_parquet(df, str(output_path))
                 logger.info(f"✅ ({count}/{total}) Saved {output_path.name}")
@@ -102,8 +113,15 @@ def extract_all_data(
                 raise
 
     logger.info(f"🎉 Done! {count} files saved to {output_dir}")
-    
+
+
 if __name__ == "__main__":
+    import getpass
+
+    USER_NAME = getpass.getuser()
+    DATALAKE_PATH = f"/media/{USER_NAME}/Seagate Portable Drive/Datalake"
+    OUTPUT_DIR = DATALAKE_PATH / "raw" / LABEL
+
     ANO_MIN = "2021"
     ANO_MAX = "2026"
     PROJECT_ID = "basedosdados"
@@ -126,13 +144,11 @@ if __name__ == "__main__":
         .getOrCreate()
     )
 
-    project_path = Path(__file__).resolve().parent.parent.parent.parent
-    output_dir = Path(project_path) / "data" / "raw" / LABEL
-    print(f"Output directory: {output_dir}")
-    os.makedirs(output_dir, exist_ok=True)
+    print(f"Output directory: {OUTPUT_DIR}")
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
     extract_all_data(
         spark,
-        output_dir,
+        OUTPUT_DIR,
         ANO_MIN,
         ANO_MAX,
         MONTHS,

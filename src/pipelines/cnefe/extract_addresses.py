@@ -38,7 +38,9 @@ def get_states_folders(year_census: int, base_url: str) -> List[str]:
     return uf_folders
 
 
-def get_municipalities_files_urls(base_url: str, state_folder: str, year_census: int) -> List[str]:
+def get_municipalities_files_urls(
+    base_url: str, state_folder: str, year_census: int
+) -> List[str]:
     census_url = base_url.format(year=year_census)
     state_url = f"{census_url}/{state_folder}/"
     logger.info(f"[{state_folder}] Fetching municipality file list from {state_url}")
@@ -63,7 +65,9 @@ def unzip_file(zip_file_path: str, extract_to: str) -> None:
     logger.info(f"Finished extracting {os.path.basename(zip_file_path)}")
 
 
-def download_municipality_state_files(state_folder: str, municipality_file: str, raw_data_dir: str) -> str:
+def download_municipality_state_files(
+    state_folder: str, municipality_file: str, raw_data_dir: str
+) -> str:
     state_dir = f"{raw_data_dir}/{state_folder}"
     os.makedirs(state_dir, exist_ok=True)
 
@@ -77,7 +81,7 @@ def download_municipality_state_files(state_folder: str, municipality_file: str,
     unzip_file(file_path, state_dir)
 
     os.remove(file_path)
-    #logger.info(f"[{state_folder}] Removed zip file after extraction: {file_name}")
+    # logger.info(f"[{state_folder}] Removed zip file after extraction: {file_name}")
 
     return file_path
 
@@ -85,11 +89,13 @@ def download_municipality_state_files(state_folder: str, municipality_file: str,
 def download_all_municipality_state_files(
     state_folders: List[str], raw_data_dir: str
 ) -> None:
-    logger.info(f"Starting download for {len(state_folders)} state(s) into '{raw_data_dir}'")
+    logger.info(
+        f"Starting download for {len(state_folders)} state(s) into '{raw_data_dir}'"
+    )
 
     for state_folder in tqdm(state_folders, desc="States", unit="state"):
-        files_for_state =get_municipalities_files_urls(BASE_URL, state_folder, 2022)
-           
+        files_for_state = get_municipalities_files_urls(BASE_URL, state_folder, 2022)
+
         for municipality_file in tqdm(
             files_for_state,
             desc=f"{state_folder}",
@@ -97,18 +103,26 @@ def download_all_municipality_state_files(
             leave=False,
         ):
             print(municipality_file)
-            download_municipality_state_files(state_folder, municipality_file, raw_data_dir)
+            download_municipality_state_files(
+                state_folder, municipality_file, raw_data_dir
+            )
 
     logger.info("All states processed successfully.")
+
+
 if __name__ == "__main__":
     import time
-    
+    import getpass
+
+    USER_NAME = getpass.getuser()
+    DATALAKE_PATH = f"/media/{USER_NAME}/Seagate Portable Drive/Datalake"
+
     start_time = time.time()
     BASE_URL = "https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_{year}/Arquivos_CNEFE/CSV/Municipio"
-    RAW_DATA_DIR = "data/raw"
+    RAW_DATA_DIR = DATALAKE_PATH / "raw"
 
     state_folders = get_states_folders(2022, BASE_URL)
-    download_all_municipality_state_files(state_folders,  RAW_DATA_DIR)
+    download_all_municipality_state_files(state_folders, RAW_DATA_DIR)
 
     end_time = time.time()
     print(f"Total execution time: {end_time - start_time:.2f} seconds")
