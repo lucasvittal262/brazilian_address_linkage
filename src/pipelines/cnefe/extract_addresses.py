@@ -113,13 +113,14 @@ def download_all_municipality_state_files(
 if __name__ == "__main__":
     import time
     import getpass
+    from pathlib import Path
 
     USER_NAME = getpass.getuser()
-    DATALAKE_PATH = f"/media/{USER_NAME}/Seagate Portable Drive/Datalake"
+    DATALAKE_PATH = Path(f"/media/{USER_NAME}/Seagate Portable Drive/Datalake")
 
     start_time = time.time()
     BASE_URL = "https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_{year}/Arquivos_CNEFE/CSV/Municipio"
-    RAW_DATA_DIR = DATALAKE_PATH / "raw"
+    RAW_DATA_DIR = DATALAKE_PATH / "raw/cnefe/"
 
     state_folders = get_states_folders(2022, BASE_URL)
     download_all_municipality_state_files(state_folders, RAW_DATA_DIR)

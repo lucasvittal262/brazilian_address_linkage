@@ -37,6 +37,7 @@ def integrate_municipality_data(raw_data_dir: str, schema: StructType) -> DataFr
     pbar = tqdm(folders, desc="Loading municipality data", unit="folder")
     for folder_path in pbar:
         folder_name = os.path.basename(folder_path)
+        logger.info(f"Getting rows for folder '{folder_name}'...")
         state_label = folder_name.split("_")[1]
         pbar.set_postfix_str(f"UF={state_label}")
 
@@ -67,21 +68,22 @@ def integrate_municipality_data(raw_data_dir: str, schema: StructType) -> DataFr
 def save_integrated_data(integrated_df: DataFrame, output_file_path: str) -> None:
     output_dir = os.path.dirname(output_file_path)
     os.makedirs(output_dir, exist_ok=True)
-
-    logger.info(f"Writing integrated data to '{output_file_path}' (mode=overwrite)...")
-    integrated_df.write.mode("overwrite").parquet(output_file_path)
-    logger.info(f"✅ Integrated data saved to {output_file_path}")
+    output_file_path_str = str(output_file_path)
+    logger.info(f"Writing integrated data to '{output_file_path_str}' (mode=overwrite)...")
+    integrated_df.write.mode("overwrite").parquet(output_file_path_str)
+    logger.info(f"✅ Integrated data saved to {output_file_path_str}")
 
 
 if __name__ == "__main__":
     import time
     import getpass
+    from pathlib import Path
 
     USER_NAME = getpass.getuser()
-    DATALAKE_PATH = f"/media/{USER_NAME}/Seagate Portable Drive/Datalake"
-    RAW_DATA_DIR = DATALAKE_PATH / "raw"
+    DATALAKE_PATH = Path(f"/media/{USER_NAME}/Seagate Portable Drive/Datalake")
+    RAW_DATA_DIR = DATALAKE_PATH / "raw/cnefe"
     OUTPUT_FILE_PATH = (
-        DATALAKE_PATH / "bronze/integrated/integrated_cnefe_addresses.parquet"
+        DATALAKE_PATH / "bronze/cnefe/integrated_cnefe_addresses"
     )
 
     start_time = time.time()

@@ -196,16 +196,17 @@ def extract_and_clean_zips(output_folder: str) -> Tuple[int, int]:
 
 if __name__ == "__main__":
     import getpass
-
+    from pathlib import Path
+    
     USER_NAME = getpass.getuser()
-    DATALAKE_PATH = f"/media/{USER_NAME}/Seagate Portable Drive/Datalake"
+    DATALAKE_PATH = Path(f"/media/{USER_NAME}/Seagate Portable Drive/Datalake")
     OUTPUT_DIR = DATALAKE_PATH / "raw/cnes"
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     time_start = time()
 
-    START_DATE = "2017-01-01"
+    START_DATE = "2025-04-01"
     END_DATE = date.today().strftime("%Y-%m-%d")
     BASE_URL = "https://cnes.datasus.gov.br/EstatisticasServlet?path=BASE_DE_DADOS_CNES_{year_month}.ZIP"
 
