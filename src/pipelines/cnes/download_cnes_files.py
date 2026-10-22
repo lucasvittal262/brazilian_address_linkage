@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
     time_start = time()
 
-    START_DATE = "2025-04-01"
+    START_DATE = "2017-01-01"
     END_DATE = date.today().strftime("%Y-%m-%d")
     BASE_URL = "https://cnes.datasus.gov.br/EstatisticasServlet?path=BASE_DE_DADOS_CNES_{year_month}.ZIP"
 
