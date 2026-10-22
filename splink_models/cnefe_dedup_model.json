@@ -1,11 +1,11 @@
 {
     "link_type": "dedupe_only",
-    "probability_two_random_records_match": 1.2668155272139472e-05,
+    "probability_two_random_records_match": 1.0782191006035262e-06,
     "retain_matching_columns": true,
     "retain_intermediate_calculation_columns": false,
     "additional_columns_to_retain": [],
     "sql_dialect": "spark",
-    "linker_uid": "n9x1hper",
+    "linker_uid": "nurag379",
     "em_convergence": 0.0001,
     "max_iterations": 25,
     "bayes_factor_column_prefix": "bf_",
@@ -13,7 +13,67 @@
     "comparison_vector_value_column_prefix": "gamma_",
     "unique_id_column_name": "unique_id",
     "source_dataset_column_name": "source_dataset",
-    "blocking_rules_to_generate_predictions": [],
+    "blocking_rules_to_generate_predictions": [
+        {
+            "blocking_rule": "l.`COD_UNICO_ENDERECO` = r.`COD_UNICO_ENDERECO`",
+            "sql_dialect": "spark"
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`CEP` = r.`CEP`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`CEP` = r.`CEP`) AND (l.`COD_SETOR` = r.`COD_SETOR`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`CEP` = r.`CEP`) AND (l.`COD_SETOR` = r.`COD_SETOR`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`NOM_SEGLOGR_phon` = r.`NOM_SEGLOGR_phon`) AND (l.`CEP` = r.`CEP`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`CEP` = r.`CEP`) AND (l.`COD_SETOR` = r.`COD_SETOR`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`NOM_SEGLOGR_phon` = r.`NOM_SEGLOGR_phon`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`COD_SETOR` = r.`COD_SETOR`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        },
+        {
+            "blocking_rule": "(l.`ENDERECO_COMPLETO_phon` = r.`ENDERECO_COMPLETO_phon`) AND (l.`COD_MUNICIPIO` = r.`COD_MUNICIPIO`) AND (l.`DSC_LOCALIDADE_phon` = r.`DSC_LOCALIDADE_phon`) AND (l.`COD_ESPECIE` = r.`COD_ESPECIE`)",
+            "sql_dialect": "spark",
+            "salting_partitions": 100
+        }
+    ],
     "comparisons": [
         {
             "output_column_name": "COD_UNICO_ENDERECO",
@@ -28,14 +88,14 @@
                 {
                     "sql_condition": "`COD_UNICO_ENDERECO_l` = `COD_UNICO_ENDERECO_r`",
                     "label_for_charts": "Exact match on COD_UNICO_ENDERECO",
-                    "m_probability": 0.007028400831688365,
+                    "m_probability": 0.011734933965206255,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.9929715991683117,
+                    "m_probability": 0.9882650660347937,
                     "u_probability": 1.0,
                     "fix_m_probability": false,
                     "fix_u_probability": false
@@ -57,7 +117,7 @@
                     "sql_condition": "`COD_MUNICIPIO_l` = `COD_MUNICIPIO_r`",
                     "label_for_charts": "Exact match on COD_MUNICIPIO",
                     "m_probability": 1.0,
-                    "u_probability": 0.1474071120071778,
+                    "u_probability": 1.0,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "COD_MUNICIPIO",
@@ -66,7 +126,6 @@
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "u_probability": 0.8525928879928222,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -87,7 +146,7 @@
                     "sql_condition": "`COD_DISTRITO_l` = `COD_DISTRITO_r`",
                     "label_for_charts": "Exact match on COD_DISTRITO",
                     "m_probability": 1.0,
-                    "u_probability": 0.14142176816769397,
+                    "u_probability": 1.0,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "COD_DISTRITO",
@@ -96,8 +155,6 @@
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.01748411828589896,
-                    "u_probability": 0.858578231832306,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -118,15 +175,15 @@
                     "sql_condition": "`COD_SUBDISTRITO_l` = `COD_SUBDISTRITO_r`",
                     "label_for_charts": "Exact match on COD_SUBDISTRITO",
                     "m_probability": 1.0,
-                    "u_probability": 0.01133519395372368,
+                    "u_probability": 0.05040386227118201,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.018328288301791864,
-                    "u_probability": 0.9886648060462763,
+                    "m_probability": 0.0018317540041681134,
+                    "u_probability": 0.949596137728818,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -146,16 +203,16 @@
                 {
                     "sql_condition": "`COD_SETOR_l` = `COD_SETOR_r`",
                     "label_for_charts": "Exact match on COD_SETOR",
-                    "m_probability": 0.8319195740901804,
-                    "u_probability": 3.0781069333546536e-05,
+                    "m_probability": 0.9180523011430204,
+                    "u_probability": 9.031195890854512e-05,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.3361608518196394,
-                    "u_probability": 0.9999692189306665,
+                    "m_probability": 0.16389539771395917,
+                    "u_probability": 0.9999096880410915,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -175,8 +232,8 @@
                 {
                     "sql_condition": "\n        cast(\n            acos(\n                \n        case\n            when (\n        sin( radians(`LATITUDE_l`) ) * sin( radians(`LATITUDE_r`) ) +\n        cos( radians(`LATITUDE_l`) ) * cos( radians(`LATITUDE_r`) )\n            * cos( radians(`LONGITUDE_r` - `LONGITUDE_l`) )\n    ) > 1 then 1\n            when (\n        sin( radians(`LATITUDE_l`) ) * sin( radians(`LATITUDE_r`) ) +\n        cos( radians(`LATITUDE_l`) ) * cos( radians(`LATITUDE_r`) )\n            * cos( radians(`LONGITUDE_r` - `LONGITUDE_l`) )\n    ) < -1 then -1\n            else (\n        sin( radians(`LATITUDE_l`) ) * sin( radians(`LATITUDE_r`) ) +\n        cos( radians(`LATITUDE_l`) ) * cos( radians(`LATITUDE_r`) )\n            * cos( radians(`LONGITUDE_r` - `LONGITUDE_l`) )\n    )\n        end\n    \n            ) * 6371\n            as float\n        )\n     <= 4",
                     "label_for_charts": "Distance less than 4km",
-                    "m_probability": 0.973111557208237,
-                    "u_probability": 0.013770939073074319,
+                    "m_probability": 0.9998643039147924,
+                    "u_probability": 0.05999871747289952,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
@@ -195,8 +252,8 @@
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.02688844279176297,
-                    "u_probability": 0.9862290609269256,
+                    "m_probability": 0.0001377419254566469,
+                    "u_probability": 0.9400012825271005,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -216,8 +273,8 @@
                 {
                     "sql_condition": "`NUM_QUADRA_l` = `NUM_QUADRA_r`",
                     "label_for_charts": "Exact match on NUM_QUADRA",
-                    "m_probability": 0.7615241197901271,
-                    "u_probability": 0.21359850292108337,
+                    "m_probability": 0.7453968475656837,
+                    "u_probability": 0.30851477200446015,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "NUM_QUADRA",
@@ -232,16 +289,16 @@
                 {
                     "sql_condition": "levenshtein(`NUM_QUADRA_l`, `NUM_QUADRA_r`) <= 1",
                     "label_for_charts": "Levenshtein distance of NUM_QUADRA <= 1",
-                    "m_probability": 0.18938595894986932,
-                    "u_probability": 0.7092482254212209,
+                    "m_probability": 0.19136004773962859,
+                    "u_probability": 0.6564924549790021,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.0490899212600036,
-                    "u_probability": 0.07715327165769574,
+                    "m_probability": 0.05186420814635383,
+                    "u_probability": 0.03499277301653779,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -262,7 +319,7 @@
                     "sql_condition": "`NOM_TIPO_SEGLOGR_l` = `NOM_TIPO_SEGLOGR_r`",
                     "label_for_charts": "Exact match on NOM_TIPO_SEGLOGR",
                     "m_probability": 1.0,
-                    "u_probability": 0.5685329318298399,
+                    "u_probability": 0.5700522067715073,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "NOM_TIPO_SEGLOGR",
@@ -271,28 +328,28 @@
                 {
                     "sql_condition": "jaro_winkler(`NOM_TIPO_SEGLOGR_l`, `NOM_TIPO_SEGLOGR_r`) >= 0.95",
                     "label_for_charts": "Jaro-Winkler distance of NOM_TIPO_SEGLOGR >= 0.95",
-                    "u_probability": 2.3214419317172576e-05,
+                    "u_probability": 4.287185567877965e-05,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "jaro_winkler(`NOM_TIPO_SEGLOGR_l`, `NOM_TIPO_SEGLOGR_r`) >= 0.9",
                     "label_for_charts": "Jaro-Winkler distance of NOM_TIPO_SEGLOGR >= 0.9",
-                    "u_probability": 0.00013414224069365768,
+                    "u_probability": 0.0002782515191028881,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "jaro_winkler(`NOM_TIPO_SEGLOGR_l`, `NOM_TIPO_SEGLOGR_r`) >= 0.8",
                     "label_for_charts": "Jaro-Winkler distance of NOM_TIPO_SEGLOGR >= 0.8",
-                    "u_probability": 0.0003106721057733579,
+                    "u_probability": 9.358834877963388e-05,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "u_probability": 0.43099903940437595,
+                    "u_probability": 0.42953308150493147,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -313,7 +370,7 @@
                     "sql_condition": "`NUM_ENDERECO_l` = `NUM_ENDERECO_r`",
                     "label_for_charts": "Exact match on NUM_ENDERECO",
                     "m_probability": 1.0,
-                    "u_probability": 0.04973064759579896,
+                    "u_probability": 0.009852708410248478,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "NUM_ENDERECO",
@@ -328,14 +385,14 @@
                 {
                     "sql_condition": "levenshtein(`NUM_ENDERECO_l`, `NUM_ENDERECO_r`) <= 1",
                     "label_for_charts": "Levenshtein distance of NUM_ENDERECO <= 1",
-                    "u_probability": 0.08348387482046966,
+                    "u_probability": 0.07404935110776455,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "u_probability": 0.8667854775837314,
+                    "u_probability": 0.916097940481987,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -355,8 +412,8 @@
                 {
                     "sql_condition": "`NUM_FACE_l` = `NUM_FACE_r`",
                     "label_for_charts": "Exact match on NUM_FACE",
-                    "m_probability": 0.6247756173712812,
-                    "u_probability": 0.16916950850132026,
+                    "m_probability": 0.6594940837300394,
+                    "u_probability": 0.2214803001567407,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "NUM_FACE",
@@ -365,8 +422,8 @@
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.3752243826287188,
-                    "u_probability": 0.8308304914986797,
+                    "m_probability": 0.34050591626996063,
+                    "u_probability": 0.7785196998432593,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -386,8 +443,8 @@
                 {
                     "sql_condition": "`CEP_l` = `CEP_r`",
                     "label_for_charts": "Exact match on CEP",
-                    "m_probability": 0.9356000352968229,
-                    "u_probability": 0.00031262336867100355,
+                    "m_probability": 0.9572938232887811,
+                    "u_probability": 0.00023594404614762747,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
@@ -400,24 +457,24 @@
                 {
                     "sql_condition": "levenshtein(`CEP_l`, `CEP_r`) <= 1",
                     "label_for_charts": "Levenshtein distance of CEP <= 1",
-                    "m_probability": 0.02151014053733183,
-                    "u_probability": 0.001260991122759657,
+                    "m_probability": 0.00923923695948718,
+                    "u_probability": 0.0009556630705644465,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "levenshtein(`CEP_l`, `CEP_r`) <= 2",
                     "label_for_charts": "Levenshtein distance of CEP <= 2",
-                    "m_probability": 0.011817926787731546,
-                    "u_probability": 0.008534397383765518,
+                    "m_probability": 0.008504414884035395,
+                    "u_probability": 0.008448191255759414,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.031071897378113684,
-                    "u_probability": 0.9898919881248038,
+                    "m_probability": 0.024962524867696317,
+                    "u_probability": 0.9903602016275285,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -437,8 +494,8 @@
                 {
                     "sql_condition": "`DSC_LOCALIDADE_l` = `DSC_LOCALIDADE_r`",
                     "label_for_charts": "Exact match on DSC_LOCALIDADE",
-                    "m_probability": 0.9994759162201451,
-                    "u_probability": 0.0037953259016401857,
+                    "m_probability": 1.0,
+                    "u_probability": 0.01234963342586661,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "DSC_LOCALIDADE",
@@ -447,32 +504,32 @@
                 {
                     "sql_condition": "jaro_winkler(`DSC_LOCALIDADE_l`, `DSC_LOCALIDADE_r`) >= 0.95",
                     "label_for_charts": "Jaro-Winkler distance of DSC_LOCALIDADE >= 0.95",
-                    "m_probability": 0.0007547956909455368,
-                    "u_probability": 3.5974748133148197e-05,
+                    "m_probability": 2.5393419454057353e-05,
+                    "u_probability": 2.8871047007455683e-05,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "jaro_winkler(`DSC_LOCALIDADE_l`, `DSC_LOCALIDADE_r`) >= 0.9",
                     "label_for_charts": "Jaro-Winkler distance of DSC_LOCALIDADE >= 0.9",
-                    "m_probability": 0.0006885891888691716,
-                    "u_probability": 0.0007627288294272157,
+                    "m_probability": 0.0002951985011534167,
+                    "u_probability": 0.00024533803020375644,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "jaro_winkler(`DSC_LOCALIDADE_l`, `DSC_LOCALIDADE_r`) >= 0.8",
                     "label_for_charts": "Jaro-Winkler distance of DSC_LOCALIDADE >= 0.8",
-                    "m_probability": 0.002868657230190611,
-                    "u_probability": 0.0074059754136860416,
+                    "m_probability": 0.0006023001676759228,
+                    "u_probability": 0.003790072283616519,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.036083591042301175,
-                    "u_probability": 0.9879999951071134,
+                    "m_probability": 0.04593510870367387,
+                    "u_probability": 0.9835860852133057,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -492,8 +549,8 @@
                 {
                     "sql_condition": "`NOM_SEGLOGR_l` = `NOM_SEGLOGR_r`",
                     "label_for_charts": "Exact match on NOM_SEGLOGR",
-                    "m_probability": 0.9975996388366013,
-                    "u_probability": 0.00018848290232713019,
+                    "m_probability": 0.9992332790378824,
+                    "u_probability": 0.0003711078646952667,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "NOM_SEGLOGR",
@@ -502,32 +559,32 @@
                 {
                     "sql_condition": "jaro_winkler(`NOM_SEGLOGR_l`, `NOM_SEGLOGR_r`) >= 0.95",
                     "label_for_charts": "Jaro-Winkler distance of NOM_SEGLOGR >= 0.95",
-                    "m_probability": 0.001884269395869108,
-                    "u_probability": 6.596696842255197e-05,
+                    "m_probability": 0.0006579068517734189,
+                    "u_probability": 7.136137299774078e-05,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "jaro_winkler(`NOM_SEGLOGR_l`, `NOM_SEGLOGR_r`) >= 0.9",
                     "label_for_charts": "Jaro-Winkler distance of NOM_SEGLOGR >= 0.9",
-                    "m_probability": 0.00012897252260069512,
-                    "u_probability": 0.00022019700353337877,
+                    "m_probability": 6.554294995308065e-05,
+                    "u_probability": 0.0002216347185513502,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "jaro_winkler(`NOM_SEGLOGR_l`, `NOM_SEGLOGR_r`) >= 0.8",
                     "label_for_charts": "Jaro-Winkler distance of NOM_SEGLOGR >= 0.8",
-                    "m_probability": 7.482221404981688e-05,
-                    "u_probability": 0.003025830316475712,
+                    "m_probability": 0.0001243383284026444,
+                    "u_probability": 0.003010186035796018,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.0003122970308790874,
-                    "u_probability": 0.9964995228092413,
+                    "m_probability": 0.00010881411034420353,
+                    "u_probability": 0.9963257100079597,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -547,8 +604,8 @@
                 {
                     "sql_condition": "`NV_GEO_COORD_l` = `NV_GEO_COORD_r`",
                     "label_for_charts": "Exact match on NV_GEO_COORD",
-                    "m_probability": 0.9827425873184913,
-                    "u_probability": 0.8183593758224786,
+                    "m_probability": 0.930433933861252,
+                    "u_probability": 0.7023182650180924,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "NV_GEO_COORD",
@@ -557,8 +614,8 @@
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.01767737892364879,
-                    "u_probability": 0.1816406241775213,
+                    "m_probability": 0.06956606613874805,
+                    "u_probability": 0.2976817349819076,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -578,8 +635,8 @@
                 {
                     "sql_condition": "`COD_ESPECIE_l` = `COD_ESPECIE_r`",
                     "label_for_charts": "Exact match on COD_ESPECIE",
-                    "m_probability": 0.6481764067518099,
-                    "u_probability": 0.7491574058260202,
+                    "m_probability": 0.7633031760025838,
+                    "u_probability": 0.8054147572659376,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "COD_ESPECIE",
@@ -588,8 +645,8 @@
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "m_probability": 0.3518235932481901,
-                    "u_probability": 0.2508425941739798,
+                    "m_probability": 0.2366968239974162,
+                    "u_probability": 0.1945852427340624,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
@@ -609,8 +666,8 @@
                 {
                     "sql_condition": "`ENDERECO_COMPLETO_l` = `ENDERECO_COMPLETO_r`",
                     "label_for_charts": "Exact match on ENDERECO_COMPLETO",
-                    "m_probability": 0.9969718747736415,
-                    "u_probability": 9.906090065649503e-06,
+                    "m_probability": 0.9979431330242213,
+                    "u_probability": 6.789610914354267e-07,
                     "fix_m_probability": false,
                     "fix_u_probability": false,
                     "tf_adjustment_column": "ENDERECO_COMPLETO",
@@ -619,30 +676,30 @@
                 {
                     "sql_condition": "jaro_winkler(`ENDERECO_COMPLETO_l`, `ENDERECO_COMPLETO_r`) >= 0.95",
                     "label_for_charts": "Jaro-Winkler distance of ENDERECO_COMPLETO >= 0.95",
-                    "m_probability": 0.002481842732197258,
-                    "u_probability": 3.3277644663856985e-05,
+                    "m_probability": 0.002016396213523742,
+                    "u_probability": 5.566467575007162e-05,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "jaro_winkler(`ENDERECO_COMPLETO_l`, `ENDERECO_COMPLETO_r`) >= 0.9",
                     "label_for_charts": "Jaro-Winkler distance of ENDERECO_COMPLETO >= 0.9",
-                    "m_probability": 0.0005462824941612863,
-                    "u_probability": 0.0002504295663661211,
+                    "m_probability": 4.063918495413132e-05,
+                    "u_probability": 0.000256333146385957,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "jaro_winkler(`ENDERECO_COMPLETO_l`, `ENDERECO_COMPLETO_r`) >= 0.8",
                     "label_for_charts": "Jaro-Winkler distance of ENDERECO_COMPLETO >= 0.8",
-                    "u_probability": 0.040684392110878105,
+                    "u_probability": 0.05301630187607286,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 },
                 {
                     "sql_condition": "ELSE",
                     "label_for_charts": "All other comparisons",
-                    "u_probability": 0.9590219945880263,
+                    "u_probability": 0.9466710213406997,
                     "fix_m_probability": false,
                     "fix_u_probability": false
                 }
